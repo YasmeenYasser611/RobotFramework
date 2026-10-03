@@ -1,83 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.10.12 on linux)" generated="2026-10-03T17:45:39.710184" rpa="false" schemaversion="5">
-<suite id="s1" name="Screenshoot" source="/home/yasmeen/Desktop/test-py/AutomationTesting/automation/screenshoot.robot">
-<test id="s1-t1" name="Elearningwebsite" line="16">
-<kw name="Open the url" owner="resource" type="SETUP">
+<robot generator="Robot 7.5 (Python 3.10.12 on linux)" generated="2026-10-03T18:02:51.455056" rpa="false" schemaversion="5">
+<suite id="s1" name="Dropdown" source="/home/yasmeen/Desktop/test-py/RobotFramework/AutomationTesting/automation/dropdown.robot">
+<test id="s1-t1" name="RadioButton and Button" line="10">
+<kw name="Perform click on Button">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-10-03T17:45:39.866498" level="INFO">Opening browser 'chrome' to base url 'https://www.itlearn360.com/'.</msg>
+<msg time="2026-10-03T18:02:51.617988" level="INFO">Opening browser 'Chrome' to base url 'https://training.qaonlinetraining.com/testPage.php'.</msg>
 <arg>${url}</arg>
 <arg>${browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-10-03T17:45:39.866325" elapsed="7.605124"/>
+<status status="PASS" start="2026-10-03T18:02:51.617788" elapsed="1.416418"/>
 </kw>
-<status status="PASS" start="2026-10-03T17:45:39.865710" elapsed="7.605887"/>
-</kw>
-<kw name="ItLearn360 Login code">
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2026-10-03T17:45:47.472244" elapsed="0.036727"/>
-</kw>
-<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
-<arg>${time}</arg>
-<doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" start="2026-10-03T17:45:47.509356" elapsed="0.000883"/>
+<status status="PASS" start="2026-10-03T18:02:53.034434" elapsed="0.012545"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-10-03T17:45:47.510641" level="INFO">Clicking element 'css=a[href="/login"]'.</msg>
-<arg>css=a[href="/login"]</arg>
+<msg time="2026-10-03T18:02:53.047625" level="INFO">Clicking element 'xpath:/html/body/form/input[4]'.</msg>
+<arg>xpath:/html/body/form/input[4]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-10-03T17:45:47.510370" elapsed="0.410079"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-10-03T17:45:47.921063" level="INFO">Typing text 'Test123456$' into text field 'id:loginPassword'.</msg>
-<arg>id:loginPassword</arg>
-<arg>${pass}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-10-03T17:45:47.920724" elapsed="0.471835"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-10-03T17:45:48.393113" level="INFO">Typing text 'Demo12' into text field 'id:loginEmail'.</msg>
-<arg>id:loginEmail</arg>
-<arg>${user}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-10-03T17:45:48.392819" elapsed="0.054032"/>
+<status status="PASS" start="2026-10-03T18:02:53.047255" elapsed="0.052635"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-10-03T17:45:48.447357" level="INFO">Clicking element 'css=button.platformLoginButton'.</msg>
-<arg>css=button.platformLoginButton</arg>
+<msg time="2026-10-03T18:02:53.100373" level="INFO">Clicking element 'xpath:/html/body/form/input[9]'.</msg>
+<arg>xpath:/html/body/form/input[9]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-10-03T17:45:48.447092" elapsed="0.046632"/>
+<status status="PASS" start="2026-10-03T18:02:53.100125" elapsed="0.042879"/>
 </kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-10-03T17:45:48.494189" level="INFO">Verifying element 'xpath:/html/body/header/div/a/span/strong' contains exact text 'Dashboard'.</msg>
-<msg time="2026-10-03T17:45:58.678684" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-14.png"&gt;&lt;img src="selenium-screenshot-14.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2026-10-03T17:45:58.678855" level="FAIL">Element with locator 'xpath:/html/body/header/div/a/span/strong' not found.</msg>
-<arg>xpath:/html/body/header/div/a/span/strong</arg>
-<arg>Dashboard</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="FAIL" start="2026-10-03T17:45:48.493944" elapsed="10.185446">Element with locator 'xpath:/html/body/header/div/a/span/strong' not found.</status>
+<status status="PASS" start="2026-10-03T18:02:51.617102" elapsed="1.526045"/>
 </kw>
-<arg>${user}</arg>
-<arg>${pass}</arg>
-<status status="FAIL" start="2026-10-03T17:45:47.471896" elapsed="11.207671">Element with locator 'xpath:/html/body/header/div/a/span/strong' not found.</status>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-10-03T17:45:58.679905" elapsed="0.072074"/>
-</kw>
-<status status="FAIL" start="2026-10-03T17:45:39.865175" elapsed="18.886983">Element with locator 'xpath:/html/body/header/div/a/span/strong' not found.</status>
+<status status="PASS" start="2026-10-03T18:02:51.616468" elapsed="1.526866"/>
 </test>
-<doc>TestDemonstrarion</doc>
-<status status="FAIL" start="2026-10-03T17:45:39.710829" elapsed="19.042008"/>
+<test id="s1-t2" name="Dropdown elements" line="13">
+<kw name="select value">
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2026-10-03T18:02:53.144408" level="INFO">Selecting options from selection list 'country' by label Ethiopia.</msg>
+<arg>country</arg>
+<arg>Ethiopia</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2026-10-03T18:02:53.144210" elapsed="0.067608"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-03T18:02:53.212294" level="INFO">Clicking element 'name:submit'.</msg>
+<arg>name:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-03T18:02:53.212053" elapsed="0.262686"/>
+</kw>
+<status status="PASS" start="2026-10-03T18:02:53.143958" elapsed="0.330943"/>
+</kw>
+<status status="PASS" start="2026-10-03T18:02:53.143542" elapsed="0.331524"/>
+</test>
+<test id="s1-t3" name="Alert Test" line="16">
+<kw name="Alert click">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-03T18:02:53.476422" level="INFO">Clicking element 'id:alert'.</msg>
+<arg>id:alert</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-03T18:02:53.476035" elapsed="0.253572"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2026-10-03T18:02:53.730049" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>accept</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2026-10-03T18:02:53.729859" elapsed="0.017232"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-10-03T18:02:53.747728" level="INFO">Clicking element 'id:confirm'.</msg>
+<arg>id:confirm</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-10-03T18:02:53.747368" elapsed="0.051547"/>
+</kw>
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2026-10-03T18:02:53.799339" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>dismiss</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2026-10-03T18:02:53.799145" elapsed="0.018539"/>
+</kw>
+<status status="PASS" start="2026-10-03T18:02:53.475641" elapsed="0.342175"/>
+</kw>
+<status status="PASS" start="2026-10-03T18:02:53.475272" elapsed="0.342708"/>
+</test>
+<doc>DrobDownAlert</doc>
+<status status="PASS" start="2026-10-03T18:02:51.455824" elapsed="2.362520"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Screenshoot" id="s1" pass="0" fail="1" skip="0">Screenshoot</stat>
+<stat name="Dropdown" id="s1" pass="3" fail="0" skip="0">Dropdown</stat>
 </suite>
 </statistics>
 <errors>
