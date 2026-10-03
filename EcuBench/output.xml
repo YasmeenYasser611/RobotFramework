@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.10.12 on linux)" generated="2026-10-04T00:39:51.612268" rpa="false" schemaversion="5">
+<suite id="s1" name="Ecu Voltage" source="/home/yasmeen/Desktop/test-py/RobotFramework/EcuBench/automation/ecu_voltage.robot">
+<test id="s1-t1" name="TC01 Lower valid limit" line="9">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.635468" level="INFO">${v} = 5.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.635175" elapsed="0.000332"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.635768" elapsed="0.000016"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.635599" elapsed="0.000209"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.635901" elapsed="0.000032"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.635832" elapsed="0.000128"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.636004" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.635977" elapsed="0.000053"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.636063" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.636043" elapsed="0.000045"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.635579" elapsed="0.000522"/>
+</if>
+<msg time="2026-10-04T00:39:51.636174" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.634817" elapsed="0.001377"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.636289" elapsed="0.000292"/>
+</kw>
+<arg>5.0</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.634399" elapsed="0.002230"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.633632" elapsed="0.003136"/>
+</test>
+<test id="s1-t2" name="TC02 Just inside" line="10">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.638257" level="INFO">${v} = 5.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.638027" elapsed="0.000251"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.638466" elapsed="0.000020"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.638330" elapsed="0.000180"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.638596" elapsed="0.000024"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.638535" elapsed="0.000106"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.638681" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.638656" elapsed="0.000052"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.638743" elapsed="0.000007"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.638722" elapsed="0.000044"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.638315" elapsed="0.000464"/>
+</if>
+<msg time="2026-10-04T00:39:51.638844" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.637783" elapsed="0.001080"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.638956" elapsed="0.000241"/>
+</kw>
+<arg>5.1</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.637277" elapsed="0.001964"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.636983" elapsed="0.002378"/>
+</test>
+<test id="s1-t3" name="TC03 Mid undervoltage" line="11">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.640785" level="INFO">${v} = 7.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.640522" elapsed="0.000284"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.640997" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.640864" elapsed="0.000171"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.641116" elapsed="0.000025"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.641052" elapsed="0.000121"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.641213" elapsed="0.000007"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.641188" elapsed="0.000049"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.641270" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.641251" elapsed="0.000047"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.640850" elapsed="0.000460"/>
+</if>
+<msg time="2026-10-04T00:39:51.641376" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.640312" elapsed="0.001083"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.641496" elapsed="0.000269"/>
+</kw>
+<arg>7.0</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.639996" elapsed="0.001840"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.639591" elapsed="0.002371"/>
+</test>
+<test id="s1-t4" name="TC04 Just below 9 V" line="12">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.643339" level="INFO">${v} = 8.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.643080" elapsed="0.000281"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.643632" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.643484" elapsed="0.000187"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.643878" elapsed="0.000024"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.643797" elapsed="0.000139"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.643977" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.643951" elapsed="0.000051"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.644036" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.644016" elapsed="0.000045"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.643460" elapsed="0.000614"/>
+</if>
+<msg time="2026-10-04T00:39:51.644145" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.642864" elapsed="0.001300"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.644270" elapsed="0.000291"/>
+</kw>
+<arg>8.9</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.642540" elapsed="0.002078"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.642176" elapsed="0.002574"/>
+</test>
+<test id="s1-t5" name="TC05 Boundary 9 V (assumed normal)" line="13">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.646276" level="INFO">${v} = 9.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.646009" elapsed="0.000292"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.646527" elapsed="0.000016"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.646364" elapsed="0.000202"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.646651" elapsed="0.000012"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.646585" elapsed="0.000098"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:39:51.646751" elapsed="0.000024"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.646697" elapsed="0.000098"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.646832" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.646810" elapsed="0.000048"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.646347" elapsed="0.000523"/>
+</if>
+<msg time="2026-10-04T00:39:51.646938" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.645788" elapsed="0.001168"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.647048" elapsed="0.000264"/>
+</kw>
+<arg>9.0</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:39:51.645442" elapsed="0.001917"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.644998" elapsed="0.002505"/>
+</test>
+<test id="s1-t6" name="TC06 Just above 9 V" line="14">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.648936" level="INFO">${v} = 9.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.648680" elapsed="0.000278"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.649167" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.649016" elapsed="0.000189"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.649282" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.649223" elapsed="0.000088"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:39:51.649378" elapsed="0.000021"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.649325" elapsed="0.000095"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.649457" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.649435" elapsed="0.000054"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.648999" elapsed="0.000503"/>
+</if>
+<msg time="2026-10-04T00:39:51.649578" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.648464" elapsed="0.001133"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.649694" elapsed="0.000249"/>
+</kw>
+<arg>9.1</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:39:51.648120" elapsed="0.001867"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.647716" elapsed="0.002391"/>
+</test>
+<test id="s1-t7" name="TC07 Mid normal" line="15">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.651524" level="INFO">${v} = 11.5</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.651300" elapsed="0.000244"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.651733" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.651601" elapsed="0.000171"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.651892" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.651827" elapsed="0.000094"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:39:51.651989" elapsed="0.000020"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.651935" elapsed="0.000094"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.652066" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.652044" elapsed="0.000051"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.651587" elapsed="0.000521"/>
+</if>
+<msg time="2026-10-04T00:39:51.652173" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.651100" elapsed="0.001092"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.652282" elapsed="0.000245"/>
+</kw>
+<arg>11.5</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:39:51.650687" elapsed="0.001884"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.650335" elapsed="0.002350"/>
+</test>
+<test id="s1-t8" name="TC08 Just below 14 V" line="16">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.653958" level="INFO">${v} = 13.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.653718" elapsed="0.000262"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.654161" elapsed="0.000014"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.654032" elapsed="0.000166"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.654273" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.654214" elapsed="0.000088"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:39:51.654370" elapsed="0.000020"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.654316" elapsed="0.000094"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.654448" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.654426" elapsed="0.000047"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.654017" elapsed="0.000475"/>
+</if>
+<msg time="2026-10-04T00:39:51.654557" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.653518" elapsed="0.001057"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.654666" elapsed="0.000236"/>
+</kw>
+<arg>13.9</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:39:51.653237" elapsed="0.001709"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.652896" elapsed="0.002171"/>
+</test>
+<test id="s1-t9" name="TC09 Boundary 14 V (assumed normal)" line="17">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.656777" level="INFO">${v} = 14.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.656530" elapsed="0.000268"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.656990" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.656851" elapsed="0.000178"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.657105" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.657046" elapsed="0.000088"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:39:51.657201" elapsed="0.000020"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.657147" elapsed="0.000094"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.657278" elapsed="0.000012"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.657256" elapsed="0.000054"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.656837" elapsed="0.000486"/>
+</if>
+<msg time="2026-10-04T00:39:51.657387" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.656227" elapsed="0.001179"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.657503" elapsed="0.000244"/>
+</kw>
+<arg>14.0</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:39:51.655663" elapsed="0.002130"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.655283" elapsed="0.002628"/>
+</test>
+<test id="s1-t10" name="TC10 Just above 14 V" line="18">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.659297" level="INFO">${v} = 14.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.659069" elapsed="0.000250"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.659505" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.659369" elapsed="0.000174"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.659625" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.659564" elapsed="0.000090"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.659721" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.659668" elapsed="0.000079"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.659826" elapsed="0.000019"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.659800" elapsed="0.000066"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.659356" elapsed="0.000523"/>
+</if>
+<msg time="2026-10-04T00:39:51.659944" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.658870" elapsed="0.001094"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.660055" elapsed="0.000236"/>
+</kw>
+<arg>14.1</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.658450" elapsed="0.001885"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.658125" elapsed="0.002330"/>
+</test>
+<test id="s1-t11" name="TC11 Mid overvoltage" line="19">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.661648" level="INFO">${v} = 16.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.661420" elapsed="0.000249"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.661848" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.661721" elapsed="0.000164"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.661960" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.661902" elapsed="0.000087"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.662056" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.662003" elapsed="0.000080"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.662117" elapsed="0.000018"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.662096" elapsed="0.000058"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.661707" elapsed="0.000461"/>
+</if>
+<msg time="2026-10-04T00:39:51.662232" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.661225" elapsed="0.001026"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.662350" elapsed="0.000267"/>
+</kw>
+<arg>16.0</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.660956" elapsed="0.001706"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.660680" elapsed="0.002108"/>
+</test>
+<test id="s1-t12" name="TC12 Just below 18 V" line="20">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.664094" level="INFO">${v} = 17.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.663840" elapsed="0.000277"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.664325" elapsed="0.000016"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.664179" elapsed="0.000185"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.664444" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.664383" elapsed="0.000090"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.664554" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.664495" elapsed="0.000085"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.664615" elapsed="0.000023"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.664594" elapsed="0.000062"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.664160" elapsed="0.000509"/>
+</if>
+<msg time="2026-10-04T00:39:51.664739" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.663635" elapsed="0.001123"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.664853" elapsed="0.000283"/>
+</kw>
+<arg>17.9</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.663337" elapsed="0.001846"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.663002" elapsed="0.002318"/>
+</test>
+<test id="s1-t13" name="TC13 Upper valid limit 18 V" line="21">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.666817" level="INFO">${v} = 18.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.666560" elapsed="0.000280"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:39:51.667035" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:39:51.666898" elapsed="0.000176"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.667152" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.667091" elapsed="0.000092"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.667252" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.667197" elapsed="0.000082"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:39:51.667315" elapsed="0.000021"/>
+</return>
+<status status="PASS" start="2026-10-04T00:39:51.667293" elapsed="0.000062"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:39:51.666882" elapsed="0.000487"/>
+</if>
+<msg time="2026-10-04T00:39:51.667437" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.666342" elapsed="0.001113"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.667605" elapsed="0.000258"/>
+</kw>
+<arg>18.0</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:39:51.665880" elapsed="0.002028"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.665552" elapsed="0.002487"/>
+</test>
+<test id="s1-t14" name="TC14 Bench refuses unsafe voltages" line="23">
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.669361" level="INFO">${v} = 4.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.669146" elapsed="0.000235"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.669805" level="FAIL">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</msg>
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-10-04T00:39:51.669574" elapsed="0.000292">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<status status="FAIL" start="2026-10-04T00:39:51.669435" elapsed="0.000485">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.669973" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.669943" elapsed="0.000059"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.670039" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.670016" elapsed="0.000047"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.670097" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.670076" elapsed="0.000045"/>
+</branch>
+<status status="FAIL" start="2026-10-04T00:39:51.669420" elapsed="0.000714">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</if>
+<arg>4.9</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="FAIL" start="2026-10-04T00:39:51.668943" elapsed="0.001258">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<arg>UNSAFE*</arg>
+<arg>ECU Model Reacts To</arg>
+<arg>4.9</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.668565" elapsed="0.001790"/>
+</kw>
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.671305" level="INFO">${v} = 18.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.671092" elapsed="0.000233"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-10-04T00:39:51.671843" level="FAIL">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</msg>
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-10-04T00:39:51.671520" elapsed="0.000374">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<status status="FAIL" start="2026-10-04T00:39:51.671377" elapsed="0.000560">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.671987" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.671958" elapsed="0.000056"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.672064" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.672031" elapsed="0.000057"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:39:51.672122" elapsed="0.000007"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:39:51.672101" elapsed="0.000044"/>
+</branch>
+<status status="FAIL" start="2026-10-04T00:39:51.671363" elapsed="0.000795">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</if>
+<arg>18.1</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="FAIL" start="2026-10-04T00:39:51.670884" elapsed="0.001330">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<arg>UNSAFE*</arg>
+<arg>ECU Model Reacts To</arg>
+<arg>18.1</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.670544" elapsed="0.001726"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:39:51.668257" elapsed="0.004151"/>
+</test>
+<doc>ECU voltage behaviour, BVA test cases TC01-TC14.
+ASSUMPTIONS (to confirm with the requirements engineer):
+resolution 0.1 V; 5.0 V = undervoltage; 9.0 V and 14.0 V = normal;
+18.0 V = overvoltage. Below 5 V and above 18 V are never applied.</doc>
+<status status="PASS" start="2026-10-04T00:39:51.612988" elapsed="0.059831"/>
+</suite>
+<statistics>
+<total>
+<stat pass="14" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ecu Voltage" id="s1" pass="14" fail="0" skip="0">Ecu Voltage</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

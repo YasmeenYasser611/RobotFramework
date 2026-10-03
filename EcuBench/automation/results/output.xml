@@ -1,0 +1,1939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.10.12 on linux)" generated="2026-10-04T00:59:35.869694" rpa="false" schemaversion="5">
+<suite id="s1" name="Ecu Voltage Alone &amp; Ecu Can Flags">
+<suite id="s1-s1" name="Ecu Voltage Alone" source="/home/yasmeen/Desktop/test-py/RobotFramework/EcuBench/automation/ecu_voltage_alone.robot">
+<test id="s1-s1-t1" name="TC01 Lower valid limit" line="9">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.893441" level="INFO">${v} = 5.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.893005" elapsed="0.000483"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.893838" elapsed="0.000030"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.893602" elapsed="0.000304"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.894035" elapsed="0.000044"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.893936" elapsed="0.000178"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.894174" elapsed="0.000013"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.894137" elapsed="0.000076"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.894267" elapsed="0.000014"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.894235" elapsed="0.000073"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.893568" elapsed="0.000762"/>
+</if>
+<msg time="2026-10-04T00:59:35.894449" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.892439" elapsed="0.002051"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.894660" elapsed="0.000404"/>
+</kw>
+<arg>5.0</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.891773" elapsed="0.003383"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.891124" elapsed="0.004230"/>
+</test>
+<test id="s1-s1-t2" name="TC02 Just inside" line="10">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.897330" level="INFO">${v} = 5.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.896950" elapsed="0.000413"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.897645" elapsed="0.000017"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.897451" elapsed="0.000246"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.897829" elapsed="0.000037"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.897724" elapsed="0.000177"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.897962" elapsed="0.000013"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.897925" elapsed="0.000087"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.898067" elapsed="0.000012"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.898032" elapsed="0.000080"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.897428" elapsed="0.000706"/>
+</if>
+<msg time="2026-10-04T00:59:35.898270" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.896621" elapsed="0.001673"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.898461" elapsed="0.000688"/>
+</kw>
+<arg>5.1</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.896020" elapsed="0.003234"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.895609" elapsed="0.003858"/>
+</test>
+<test id="s1-s1-t3" name="TC03 Mid undervoltage" line="11">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.900611" level="INFO">${v} = 7.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.900380" elapsed="0.000252"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.900826" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.900690" elapsed="0.000174"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.900941" elapsed="0.000023"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.900881" elapsed="0.000103"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.901031" elapsed="0.000012"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.900998" elapsed="0.000070"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.901196" elapsed="0.000021"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.901128" elapsed="0.000148"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.900675" elapsed="0.000639"/>
+</if>
+<msg time="2026-10-04T00:59:35.901457" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.900172" elapsed="0.001334"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.901700" elapsed="0.000332"/>
+</kw>
+<arg>7.0</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.899876" elapsed="0.002202"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.899616" elapsed="0.002563"/>
+</test>
+<test id="s1-s1-t4" name="TC04 Just below 9 V" line="12">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.903291" level="INFO">${v} = 8.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.903066" elapsed="0.000298"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.903573" elapsed="0.000016"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.903420" elapsed="0.000193"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.903689" elapsed="0.000021"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.903629" elapsed="0.000102"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.903769" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.903745" elapsed="0.000048"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.903825" elapsed="0.000007"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.903806" elapsed="0.000041"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.903405" elapsed="0.000454"/>
+</if>
+<msg time="2026-10-04T00:59:35.903924" level="INFO">${actual} = UNDERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.902868" elapsed="0.001074"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.904033" elapsed="0.000246"/>
+</kw>
+<arg>8.9</arg>
+<arg>UNDERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.902600" elapsed="0.001722"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.902328" elapsed="0.002091"/>
+</test>
+<test id="s1-s1-t5" name="TC05 Boundary 9 V (assumed normal)" line="13">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.905581" level="INFO">${v} = 9.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.905360" elapsed="0.000241"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.905778" elapsed="0.000014"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.905650" elapsed="0.000171"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.905917" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.905842" elapsed="0.000103"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:59:35.906010" elapsed="0.000020"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.905958" elapsed="0.000091"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.906083" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.906062" elapsed="0.000045"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.905637" elapsed="0.000482"/>
+</if>
+<msg time="2026-10-04T00:59:35.906181" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.905171" elapsed="0.001027"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.906286" elapsed="0.000252"/>
+</kw>
+<arg>9.0</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:59:35.904908" elapsed="0.001674"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.904565" elapsed="0.002114"/>
+</test>
+<test id="s1-s1-t6" name="TC06 Just above 9 V" line="14">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.907738" level="INFO">${v} = 9.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.907523" elapsed="0.000234"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.907928" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.907805" elapsed="0.000160"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.908040" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.907980" elapsed="0.000086"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:59:35.908130" elapsed="0.000018"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.908079" elapsed="0.000088"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.908201" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.908181" elapsed="0.000043"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.907793" elapsed="0.000442"/>
+</if>
+<msg time="2026-10-04T00:59:35.908296" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.907314" elapsed="0.000999"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.908400" elapsed="0.000240"/>
+</kw>
+<arg>9.1</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:59:35.907056" elapsed="0.001626"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.906815" elapsed="0.001960"/>
+</test>
+<test id="s1-s1-t7" name="TC07 Mid normal" line="15">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.909829" level="INFO">${v} = 11.5</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.909612" elapsed="0.000237"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.910032" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.909897" elapsed="0.000208"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.910186" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.910124" elapsed="0.000090"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:59:35.910280" elapsed="0.000019"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.910227" elapsed="0.000194"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.910458" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.910436" elapsed="0.000067"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.909884" elapsed="0.000638"/>
+</if>
+<msg time="2026-10-04T00:59:35.910590" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.909408" elapsed="0.001200"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.910700" elapsed="0.000236"/>
+</kw>
+<arg>11.5</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:59:35.909142" elapsed="0.001836"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.908914" elapsed="0.002160"/>
+</test>
+<test id="s1-s1-t8" name="TC08 Just below 14 V" line="16">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.912102" level="INFO">${v} = 13.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.911893" elapsed="0.000229"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.912288" elapsed="0.000014"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.912170" elapsed="0.000154"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.912394" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.912339" elapsed="0.000082"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:59:35.912492" elapsed="0.000019"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.912433" elapsed="0.000098"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.912566" elapsed="0.000007"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.912545" elapsed="0.000044"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.912157" elapsed="0.000443"/>
+</if>
+<msg time="2026-10-04T00:59:35.912661" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.911706" elapsed="0.000973"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.912766" elapsed="0.000234"/>
+</kw>
+<arg>13.9</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:59:35.911441" elapsed="0.001601"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.911217" elapsed="0.001922"/>
+</test>
+<test id="s1-s1-t9" name="TC09 Boundary 14 V (assumed normal)" line="17">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.914230" level="INFO">${v} = 14.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.914008" elapsed="0.000243"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.914444" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.914312" elapsed="0.000178"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.914578" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.914514" elapsed="0.000093"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="PASS" start="2026-10-04T00:59:35.914671" elapsed="0.000021"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.914620" elapsed="0.000091"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.914745" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.914725" elapsed="0.000043"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.914289" elapsed="0.000491"/>
+</if>
+<msg time="2026-10-04T00:59:35.914844" level="INFO">${actual} = NORMAL</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.913807" elapsed="0.001054"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.914950" elapsed="0.000258"/>
+</kw>
+<arg>14.0</arg>
+<arg>NORMAL</arg>
+<status status="PASS" start="2026-10-04T00:59:35.913536" elapsed="0.001717"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.913281" elapsed="0.002078"/>
+</test>
+<test id="s1-s1-t10" name="TC10 Just above 14 V" line="18">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.916617" level="INFO">${v} = 14.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.916370" elapsed="0.000268"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.916827" elapsed="0.000016"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.916691" elapsed="0.000174"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.916939" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.916881" elapsed="0.000087"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.917032" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.916981" elapsed="0.000124"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.917146" elapsed="0.000024"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.917122" elapsed="0.000067"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.916676" elapsed="0.000526"/>
+</if>
+<msg time="2026-10-04T00:59:35.917276" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.916044" elapsed="0.001251"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.917396" elapsed="0.000298"/>
+</kw>
+<arg>14.1</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.915763" elapsed="0.001977"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.915518" elapsed="0.002336"/>
+</test>
+<test id="s1-s1-t11" name="TC11 Mid overvoltage" line="19">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.918962" level="INFO">${v} = 16.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.918747" elapsed="0.000235"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.919154" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.919031" elapsed="0.000159"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.919264" elapsed="0.000010"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.919207" elapsed="0.000084"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.919355" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.919305" elapsed="0.000076"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.919414" elapsed="0.000021"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.919394" elapsed="0.000059"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.919018" elapsed="0.000448"/>
+</if>
+<msg time="2026-10-04T00:59:35.919541" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.918552" elapsed="0.001006"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.919649" elapsed="0.000248"/>
+</kw>
+<arg>16.0</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.918260" elapsed="0.001681"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.918005" elapsed="0.002028"/>
+</test>
+<test id="s1-s1-t12" name="TC12 Just below 18 V" line="20">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.921107" level="INFO">${v} = 17.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.920879" elapsed="0.000248"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.921315" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.921181" elapsed="0.000172"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.921427" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.921369" elapsed="0.000087"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.921536" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.921469" elapsed="0.000094"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.921597" elapsed="0.000023"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.921576" elapsed="0.000062"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.921166" elapsed="0.000485"/>
+</if>
+<msg time="2026-10-04T00:59:35.921726" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.920677" elapsed="0.001074"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.921919" elapsed="0.000329"/>
+</kw>
+<arg>17.9</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.920402" elapsed="0.001897"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.920176" elapsed="0.002248"/>
+</test>
+<test id="s1-s1-t13" name="TC13 Upper valid limit 18 V" line="21">
+<kw name="Check ECU Behaviour">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.923763" level="INFO">${v} = 18.0</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.923521" elapsed="0.000263"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-10-04T00:59:35.923979" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-10-04T00:59:35.923838" elapsed="0.000179"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.924095" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.924034" elapsed="0.000091"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.924195" elapsed="0.000009"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.924139" elapsed="0.000082"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="PASS" start="2026-10-04T00:59:35.924255" elapsed="0.000022"/>
+</return>
+<status status="PASS" start="2026-10-04T00:59:35.924234" elapsed="0.000061"/>
+</branch>
+<status status="PASS" start="2026-10-04T00:59:35.923823" elapsed="0.000485"/>
+</if>
+<msg time="2026-10-04T00:59:35.924377" level="INFO">${actual} = OVERVOLTAGE</msg>
+<var>${actual}</var>
+<arg>${volts}</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.923310" elapsed="0.001126"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual}</arg>
+<arg>${expected}</arg>
+<arg>Wrong behaviour at ${volts} V</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.924544" elapsed="0.000282"/>
+</kw>
+<arg>18.0</arg>
+<arg>OVERVOLTAGE</arg>
+<status status="PASS" start="2026-10-04T00:59:35.922875" elapsed="0.001996"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.922593" elapsed="0.002394"/>
+</test>
+<test id="s1-s1-t14" name="TC14 Bench refuses unsafe voltages" line="23">
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.926272" level="INFO">${v} = 4.9</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.926046" elapsed="0.000247"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.926747" level="FAIL">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</msg>
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-10-04T00:59:35.926508" elapsed="0.000299">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<status status="FAIL" start="2026-10-04T00:59:35.926349" elapsed="0.000509">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.926913" elapsed="0.000011"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.926882" elapsed="0.000061"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.926978" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.926956" elapsed="0.000045"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.927032" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.927013" elapsed="0.000042"/>
+</branch>
+<status status="FAIL" start="2026-10-04T00:59:35.926333" elapsed="0.000734">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</if>
+<arg>4.9</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="FAIL" start="2026-10-04T00:59:35.925835" elapsed="0.001292">UNSAFE: 4.9 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<arg>UNSAFE*</arg>
+<arg>ECU Model Reacts To</arg>
+<arg>4.9</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.925405" elapsed="0.001874"/>
+</kw>
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="ECU Model Reacts To">
+<kw name="Convert To Number" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.928196" level="INFO">${v} = 18.1</msg>
+<var>${v}</var>
+<arg>${volts}</arg>
+<doc>Converts the given item to a floating point number.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.927972" elapsed="0.000251"/>
+</kw>
+<if>
+<branch type="IF" condition="${v} &lt; 5 or ${v} &gt; 18">
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.928643" level="FAIL">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</msg>
+<arg>UNSAFE: ${v} V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</arg>
+<doc>Fails the test or task with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-10-04T00:59:35.928414" elapsed="0.000277">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<status status="FAIL" start="2026-10-04T00:59:35.928274" elapsed="0.000459">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt; 9">
+<return>
+<value>UNDERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.929434" elapsed="0.000013"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.928754" elapsed="0.000713"/>
+</branch>
+<branch type="ELSE IF" condition="${v} &lt;= 14">
+<return>
+<value>NORMAL</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.929519" elapsed="0.000008"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.929483" elapsed="0.000061"/>
+</branch>
+<branch type="ELSE">
+<return>
+<value>OVERVOLTAGE</value>
+<status status="NOT RUN" start="2026-10-04T00:59:35.929577" elapsed="0.000007"/>
+</return>
+<status status="NOT RUN" start="2026-10-04T00:59:35.929557" elapsed="0.000042"/>
+</branch>
+<status status="FAIL" start="2026-10-04T00:59:35.928260" elapsed="0.001352">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</if>
+<arg>18.1</arg>
+<doc>Stand-in for the real ECU. On a real bench, replace this
+with a power supply and an ECU output readout.</doc>
+<status status="FAIL" start="2026-10-04T00:59:35.927766" elapsed="0.001903">UNSAFE: 18.1 V is outside the 5-18 V safe range. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<arg>UNSAFE*</arg>
+<arg>ECU Model Reacts To</arg>
+<arg>18.1</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.927423" elapsed="0.002305"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.925137" elapsed="0.004707"/>
+</test>
+<doc>Task 1: ECU voltage behaviour, BVA test cases TC01-TC14.
+ASSUMPTIONS (to confirm with the requirements engineer):
+resolution 0.1 V; 5.0 V = undervoltage; 9.0 V and 14.0 V = normal;
+18.0 V = overvoltage. Below 5 V and above 18 V are never applied.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.890090" elapsed="0.040063"/>
+</suite>
+<suite id="s1-s2" name="Ecu Can Flags" source="/home/yasmeen/Desktop/test-py/RobotFramework/EcuBench/automation/ecu_can_flags.robot">
+<test id="s1-s2-t1" name="TC001 Lower valid limit" line="17">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.933121" elapsed="0.000090"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.933391" level="INFO">${frame} = [0, 0, 0, 16, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.933278" elapsed="0.000136"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.933811" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.933868" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.933501" elapsed="0.000385"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.933968" elapsed="0.000286"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.934581" level="INFO">${b4} = 16</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.934337" elapsed="0.000263"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.935017" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.934728" elapsed="0.000308"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.935471" level="INFO">${uv} = 1</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.935122" elapsed="0.000380"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.935847" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.935595" elapsed="0.000294"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.936202" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.935969" elapsed="0.000269"/>
+</kw>
+<arg>5.0</arg>
+<arg>1</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.932894" elapsed="0.003390"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.932585" elapsed="0.003813"/>
+</test>
+<test id="s1-s2-t2" name="TC002 Just inside" line="18">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.937029" elapsed="0.000079"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.937265" level="INFO">${frame} = [0, 0, 0, 16, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.937168" elapsed="0.000115"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.937552" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.937605" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.937353" elapsed="0.000268"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.937701" elapsed="0.000237"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.938214" level="INFO">${b4} = 16</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.938017" elapsed="0.000215"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.938599" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.938315" elapsed="0.000304"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.938978" level="INFO">${uv} = 1</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.938705" elapsed="0.000292"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.939307" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.939073" elapsed="0.000272"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.939666" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.939422" elapsed="0.000279"/>
+</kw>
+<arg>5.1</arg>
+<arg>1</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.936830" elapsed="0.002913"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.936563" elapsed="0.003280"/>
+</test>
+<test id="s1-s2-t3" name="TC003 Mid undervoltage" line="19">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.940431" elapsed="0.000089"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.940677" level="INFO">${frame} = [0, 0, 0, 16, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.940580" elapsed="0.000115"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.940973" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.941025" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.940770" elapsed="0.000271"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.941125" elapsed="0.000227"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.941651" level="INFO">${b4} = 16</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.941429" elapsed="0.000241"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.942027" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.941759" elapsed="0.000288"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.942395" level="INFO">${uv} = 1</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.942134" elapsed="0.000279"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.942735" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.942496" elapsed="0.000277"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.943092" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.942851" elapsed="0.000276"/>
+</kw>
+<arg>7.0</arg>
+<arg>1</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.940242" elapsed="0.002926"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.939989" elapsed="0.003313"/>
+</test>
+<test id="s1-s2-t4" name="TC004 Just below 9 V" line="20">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.943914" elapsed="0.000127"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.944204" level="INFO">${frame} = [0, 0, 0, 16, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.944105" elapsed="0.000117"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.944470" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.944536" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.944291" elapsed="0.000262"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.944633" elapsed="0.000351"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.945303" level="INFO">${b4} = 16</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.945086" elapsed="0.000236"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.945740" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.945416" elapsed="0.000343"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.946102" level="INFO">${uv} = 1</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.945844" elapsed="0.000277"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.946425" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.946197" elapsed="0.000267"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.946789" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.946557" elapsed="0.000267"/>
+</kw>
+<arg>8.9</arg>
+<arg>1</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.943713" elapsed="0.003154"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.943446" elapsed="0.003529"/>
+</test>
+<test id="s1-s2-t5" name="TC005 Boundary 9 V" line="21">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.947576" elapsed="0.000079"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.947818" level="INFO">${frame} = [0, 0, 0, 0, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.947715" elapsed="0.000121"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.948084" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.948135" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.947905" elapsed="0.000247"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.948230" elapsed="0.000236"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.948838" level="INFO">${b4} = 0</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.948557" elapsed="0.000303"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.949213" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.948947" elapsed="0.000285"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.949588" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.949317" elapsed="0.000290"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.949912" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.949683" elapsed="0.000267"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.950260" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.950028" elapsed="0.000267"/>
+</kw>
+<arg>9.0</arg>
+<arg>0</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.947369" elapsed="0.002968"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.947121" elapsed="0.003325"/>
+</test>
+<test id="s1-s2-t6" name="TC006 Just above 9 V" line="22">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.951067" elapsed="0.000079"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.951302" level="INFO">${frame} = [0, 0, 0, 0, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.951206" elapsed="0.000114"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.951589" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.951654" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.951390" elapsed="0.000282"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.951753" elapsed="0.000234"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.952265" level="INFO">${b4} = 0</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.952066" elapsed="0.000217"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.952704" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.952383" elapsed="0.000399"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.953247" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.952897" elapsed="0.000372"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.953644" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.953363" elapsed="0.000324"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.954024" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.953778" elapsed="0.000285"/>
+</kw>
+<arg>9.1</arg>
+<arg>0</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.950873" elapsed="0.003239"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.950608" elapsed="0.003629"/>
+</test>
+<test id="s1-s2-t7" name="TC007 Mid normal" line="23">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.954936" elapsed="0.000087"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.955347" level="INFO">${frame} = [0, 0, 0, 0, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.955100" elapsed="0.000267"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.955680" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.955739" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.955443" elapsed="0.000313"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.955871" elapsed="0.000339"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.956598" level="INFO">${b4} = 0</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.956301" elapsed="0.000318"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.957002" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.956711" elapsed="0.000311"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.957384" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.957109" elapsed="0.000294"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.957743" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.957491" elapsed="0.000292"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.958100" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.957861" elapsed="0.000277"/>
+</kw>
+<arg>11.5</arg>
+<arg>0</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.954717" elapsed="0.003468"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.954403" elapsed="0.003912"/>
+</test>
+<test id="s1-s2-t8" name="TC008 Just below 14 V" line="24">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.959016" elapsed="0.000081"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.959255" level="INFO">${frame} = [0, 0, 0, 0, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.959157" elapsed="0.000116"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.959555" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.959608" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.959343" elapsed="0.000282"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.959703" elapsed="0.000231"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.960212" level="INFO">${b4} = 0</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.960012" elapsed="0.000218"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.960619" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.960312" elapsed="0.000326"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.960981" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.960723" elapsed="0.000277"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.961301" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.961073" elapsed="0.000265"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.961664" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.961414" elapsed="0.000286"/>
+</kw>
+<arg>13.9</arg>
+<arg>0</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.958794" elapsed="0.002951"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.958494" elapsed="0.003353"/>
+</test>
+<test id="s1-s2-t9" name="TC009 Boundary 14 V" line="25">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.962529" elapsed="0.000088"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.962777" level="INFO">${frame} = [0, 0, 0, 0, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.962679" elapsed="0.000116"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.963115" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.963189" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.962874" elapsed="0.000334"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.963321" elapsed="0.000353"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.963990" level="INFO">${b4} = 0</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.963761" elapsed="0.000249"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.964412" level="INFO">${ov} = 0</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.964107" elapsed="0.000330"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.964814" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.964539" elapsed="0.000294"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.965160" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.964911" elapsed="0.000303"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.965652" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.965330" elapsed="0.000364"/>
+</kw>
+<arg>14.0</arg>
+<arg>0</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-10-04T00:59:35.962277" elapsed="0.003471"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.961995" elapsed="0.003885"/>
+</test>
+<test id="s1-s2-t10" name="TC010 Just above 14 V" line="26">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.966725" elapsed="0.000089"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.967021" level="INFO">${frame} = [0, 0, 0, 2, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.966886" elapsed="0.000156"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.967345" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.967401" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.967120" elapsed="0.000298"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.967507" elapsed="0.000263"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.968056" level="INFO">${b4} = 2</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.967851" elapsed="0.000223"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.968430" level="INFO">${ov} = 1</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.968156" elapsed="0.000293"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.968803" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.968541" elapsed="0.000281"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.969135" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.968898" elapsed="0.000275"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.969488" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.969251" elapsed="0.000276"/>
+</kw>
+<arg>14.1</arg>
+<arg>0</arg>
+<arg>1</arg>
+<status status="PASS" start="2026-10-04T00:59:35.966359" elapsed="0.003215"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.966050" elapsed="0.003633"/>
+</test>
+<test id="s1-s2-t11" name="TC011 Mid overvoltage" line="27">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.970341" elapsed="0.000079"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.970597" level="INFO">${frame} = [0, 0, 0, 2, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.970489" elapsed="0.000127"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.970876" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.970928" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.970687" elapsed="0.000257"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.971022" elapsed="0.000228"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.971535" level="INFO">${b4} = 2</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.971326" elapsed="0.000227"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.971907" level="INFO">${ov} = 1</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.971649" elapsed="0.000277"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.972318" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.972008" elapsed="0.000329"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.972667" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.972414" elapsed="0.000292"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.973010" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.972784" elapsed="0.000262"/>
+</kw>
+<arg>16.0</arg>
+<arg>0</arg>
+<arg>1</arg>
+<status status="PASS" start="2026-10-04T00:59:35.970138" elapsed="0.002952"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.969836" elapsed="0.003357"/>
+</test>
+<test id="s1-s2-t12" name="TC012 Just below 18 V" line="28">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.973866" elapsed="0.000089"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.974124" level="INFO">${frame} = [0, 0, 0, 2, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.974021" elapsed="0.000121"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.974426" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.974488" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.974214" elapsed="0.000296"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.974594" elapsed="0.000249"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.975122" level="INFO">${b4} = 2</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.974922" elapsed="0.000219"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.975501" level="INFO">${ov} = 1</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.975222" elapsed="0.000302"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.975892" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.975614" elapsed="0.000297"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.976488" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.975986" elapsed="0.000556"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.976905" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.976635" elapsed="0.000311"/>
+</kw>
+<arg>17.9</arg>
+<arg>0</arg>
+<arg>1</arg>
+<status status="PASS" start="2026-10-04T00:59:35.973645" elapsed="0.003353"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.973342" elapsed="0.003790"/>
+</test>
+<test id="s1-s2-t13" name="TC013 Upper valid limit 18 V" line="29">
+<kw name="Flags Should Match Voltage">
+<kw name="Set Supply Voltage" owner="team_framework">
+<arg>${volts}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.977853" elapsed="0.000087"/>
+</kw>
+<kw name="Get Frame Data" owner="team_framework">
+<msg time="2026-10-04T00:59:35.978109" level="INFO">${frame} = [0, 0, 0, 2, 0, 0, 0, 0]</msg>
+<var>${frame}</var>
+<arg>${FRAME_ID}</arg>
+<status status="PASS" start="2026-10-04T00:59:35.978004" elapsed="0.000124"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.978406" level="INFO">Length is 8.</msg>
+<msg time="2026-10-04T00:59:35.978459" level="INFO">${len} = 8</msg>
+<var>${len}</var>
+<arg>${frame}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.978201" elapsed="0.000282"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${len} &gt; ${BYTE4_INDEX}</arg>
+<arg>Frame too short: ${len} bytes</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.978573" elapsed="0.000261"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.979124" level="INFO">${b4} = 2</msg>
+<var>${b4}</var>
+<arg>${frame}[${BYTE4_INDEX}]</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.978916" elapsed="0.000226"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.979508" level="INFO">${ov} = 1</msg>
+<var>${ov}</var>
+<arg>int((${b4} &amp; ${OV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.979227" elapsed="0.000302"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.979879" level="INFO">${uv} = 0</msg>
+<var>${uv}</var>
+<arg>int((${b4} &amp; ${UV_MASK}) != 0)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.979616" elapsed="0.000282"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.980204" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${ov}</arg>
+<arg>${exp_ov}</arg>
+<arg>Overvoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.979973" elapsed="0.000269"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-04T00:59:35.980557" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${uv}</arg>
+<arg>${exp_uv}</arg>
+<arg>Undervoltage flag wrong at ${volts} V (Byte 4 = ${b4})</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.980319" elapsed="0.000273"/>
+</kw>
+<arg>18.0</arg>
+<arg>0</arg>
+<arg>1</arg>
+<status status="PASS" start="2026-10-04T00:59:35.977635" elapsed="0.003002"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.977306" elapsed="0.003440"/>
+</test>
+<test id="s1-s2-t14" name="TC014 Bench refuses unsafe voltages" line="31">
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="Set Supply Voltage" owner="team_framework">
+<msg time="2026-10-04T00:59:35.981472" level="FAIL">UNSAFE: 4.9 V is outside 5-18 V. Not applied. Escalate to the requirements engineer.</msg>
+<arg>4.9</arg>
+<status status="FAIL" start="2026-10-04T00:59:35.981371" elapsed="0.000316">UNSAFE: 4.9 V is outside 5-18 V. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<arg>UNSAFE*</arg>
+<arg>Set Supply Voltage</arg>
+<arg>4.9</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.981161" elapsed="0.000594"/>
+</kw>
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="Set Supply Voltage" owner="team_framework">
+<msg time="2026-10-04T00:59:35.982203" level="FAIL">UNSAFE: 18.1 V is outside 5-18 V. Not applied. Escalate to the requirements engineer.</msg>
+<arg>18.1</arg>
+<status status="FAIL" start="2026-10-04T00:59:35.982097" elapsed="0.000173">UNSAFE: 18.1 V is outside 5-18 V. Not applied. Escalate to the requirements engineer.</status>
+</kw>
+<arg>UNSAFE*</arg>
+<arg>Set Supply Voltage</arg>
+<arg>18.1</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.981884" elapsed="0.000441"/>
+</kw>
+<status status="PASS" start="2026-10-04T00:59:35.980901" elapsed="0.001525"/>
+</test>
+<doc>Task 2: flags in CAN frame 0x123, Byte 4, checked with bit masks.
+CONVENTIONS (to confirm): Byte 4 = index 3 (bytes numbered from 1);
+Overvoltage mask 0x02 (Bit 1); Undervoltage mask 0x10 (Bit 5),
+as given in the interview. Note: 0x02 counts bits from 0 but 0x10
+counts from 1 - ask which bit is the first one.</doc>
+<status status="PASS" start="2026-10-04T00:59:35.930702" elapsed="0.051969"/>
+</suite>
+<status status="PASS" start="2026-10-04T00:59:35.870507" elapsed="0.112886"/>
+</suite>
+<statistics>
+<total>
+<stat pass="28" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ecu Voltage Alone &amp; Ecu Can Flags" id="s1" pass="28" fail="0" skip="0">Ecu Voltage Alone &amp; Ecu Can Flags</stat>
+<stat name="Ecu Voltage Alone" id="s1-s1" pass="14" fail="0" skip="0">Ecu Voltage Alone &amp; Ecu Can Flags.Ecu Voltage Alone</stat>
+<stat name="Ecu Can Flags" id="s1-s2" pass="14" fail="0" skip="0">Ecu Voltage Alone &amp; Ecu Can Flags.Ecu Can Flags</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
