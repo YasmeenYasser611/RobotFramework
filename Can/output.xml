@@ -1,70 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.10.12 on linux)" generated="2026-10-03T22:44:36.926139" rpa="false" schemaversion="5">
+<robot generator="Robot 7.5 (Python 3.10.12 on linux)" generated="2026-10-03T23:21:42.284020" rpa="false" schemaversion="5">
 <suite id="s1" name="Can Test" source="/home/yasmeen/Desktop/test-py/RobotFramework/Can/automation/can_test.robot">
 <test id="s1-t1" name="Frame Is Received Correctly" line="7">
 <kw name="Connect Virtual Bus" owner="CanSim" type="SETUP">
-<status status="PASS" start="2026-10-03T22:44:36.965648" elapsed="0.000976"/>
+<status status="PASS" start="2026-10-03T23:21:42.325262" elapsed="0.000938"/>
 </kw>
 <kw name="Send Frame" owner="CanSim">
 <arg>0x123</arg>
 <arg>0x11</arg>
 <arg>0x22</arg>
 <arg>0x33</arg>
-<status status="PASS" start="2026-10-03T22:44:36.966766" elapsed="0.000131"/>
+<status status="PASS" start="2026-10-03T23:21:42.326325" elapsed="0.000137"/>
 </kw>
 <kw name="Receive Frame" owner="CanSim">
-<msg time="2026-10-03T22:44:36.967249" level="INFO">${msg} = Timestamp: 1791056676.966853    ID:      123    S Rx                DL:  3    11 22 33                    Channel: test_bus</msg>
+<msg time="2026-10-03T23:21:42.326823" level="INFO">${msg} = Timestamp: 1791058902.326405    ID:      123    S Rx                DL:  3    11 22 33                    Channel: test_bus</msg>
 <var>${msg}</var>
 <arg>timeout=1</arg>
-<status status="PASS" start="2026-10-03T22:44:36.967001" elapsed="0.000273"/>
+<status status="PASS" start="2026-10-03T23:21:42.326569" elapsed="0.000278"/>
 </kw>
 <kw name="Frame Id Should Be" owner="CanSim">
 <arg>${msg}</arg>
 <arg>0x123</arg>
-<status status="PASS" start="2026-10-03T22:44:36.967366" elapsed="0.000091"/>
+<status status="PASS" start="2026-10-03T23:21:42.326937" elapsed="0.000093"/>
 </kw>
 <kw name="Frame Data Should Be" owner="CanSim">
 <arg>${msg}</arg>
 <arg>0x11</arg>
 <arg>0x22</arg>
 <arg>0x33</arg>
-<status status="PASS" start="2026-10-03T22:44:36.967563" elapsed="0.000091"/>
+<status status="PASS" start="2026-10-03T23:21:42.327133" elapsed="0.000121"/>
 </kw>
 <kw name="Disconnect" owner="CanSim" type="TEARDOWN">
-<status status="PASS" start="2026-10-03T22:44:36.967806" elapsed="0.000065"/>
+<status status="PASS" start="2026-10-03T23:21:42.327403" elapsed="0.000072"/>
 </kw>
-<tag>smoke</tag>
-<status status="PASS" start="2026-10-03T22:44:36.965000" elapsed="0.002927"/>
+<status status="PASS" start="2026-10-03T23:21:42.324606" elapsed="0.002917"/>
 </test>
-<test id="s1-t2" name="Receive Fails When Nothing Is Sent" line="14">
+<test id="s1-t2" name="Receive Fails When Nothing Is Sent" line="13">
 <kw name="Connect Virtual Bus" owner="CanSim" type="SETUP">
-<status status="PASS" start="2026-10-03T22:44:36.968332" elapsed="0.000501"/>
+<status status="PASS" start="2026-10-03T23:21:42.327917" elapsed="0.000500"/>
 </kw>
 <kw name="Run Keyword And Expect Error" owner="BuiltIn">
 <kw name="Receive Frame" owner="CanSim">
-<msg time="2026-10-03T22:44:37.470202" level="FAIL">No CAN frame received</msg>
+<msg time="2026-10-03T23:21:42.829425" level="FAIL">No CAN frame received</msg>
 <arg>timeout=0.5</arg>
-<status status="FAIL" start="2026-10-03T22:44:36.969255" elapsed="0.501650">No CAN frame received</status>
+<status status="FAIL" start="2026-10-03T23:21:42.328917" elapsed="0.500980">No CAN frame received</status>
 </kw>
 <arg>No CAN frame received</arg>
 <arg>Receive Frame</arg>
 <arg>timeout=0.5</arg>
 <doc>Runs the keyword and checks that the expected error occurred.</doc>
-<status status="PASS" start="2026-10-03T22:44:36.968962" elapsed="0.502337"/>
+<status status="PASS" start="2026-10-03T23:21:42.328562" elapsed="0.501770"/>
 </kw>
 <kw name="Disconnect" owner="CanSim" type="TEARDOWN">
-<status status="PASS" start="2026-10-03T22:44:37.471677" elapsed="0.000124"/>
+<status status="PASS" start="2026-10-03T23:21:42.830828" elapsed="0.000146"/>
 </kw>
-<status status="PASS" start="2026-10-03T22:44:36.968105" elapsed="0.503738"/>
+<status status="PASS" start="2026-10-03T23:21:42.327694" elapsed="0.503327"/>
 </test>
-<status status="PASS" start="2026-10-03T22:44:36.926840" elapsed="0.545295"/>
+<status status="PASS" start="2026-10-03T23:21:42.284854" elapsed="0.546511"/>
 </suite>
 <statistics>
 <total>
 <stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
 <stat name="Can Test" id="s1" pass="2" fail="0" skip="0">Can Test</stat>
