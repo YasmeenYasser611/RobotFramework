@@ -10,6 +10,19 @@ Two tasks, one project.
 | `flag_check.py` | Plain-Python bit-masking version of the exercise |
 | `test_case_specification.md` | Written test cases: preconditions, steps, expected results, pass criteria |
 
+
+## Requirements traceability
+
+| Requirement | Description | Test cases | Status |
+|---|---|---|---|
+| REQ-01 | 9 to 14 V: normal operation | TC05 to TC09 | Covered |
+| REQ-02 | 14 to 18 V: overvoltage flag | TC10 to TC13 | Covered |
+| REQ-03 | 5 to 9 V: undervoltage flag | TC01 to TC04 | Covered |
+| REQ-04 | Below 5 V: ECU shuts down | TC14 (bench refuses the voltage) | Not run on ECU (unsafe) |
+| REQ-05 | Above 18 V: ECU is damaged | TC14 (bench refuses the voltage) | Not run on ECU (unsafe) |
+| REQ-06 | Frame 0x123: Overvoltage flag in Byte 4 Bit 1, Undervoltage flag in Byte 4 Bit 5 | `ecu_can_flags.robot` | Covered |
+
+
 ## Run
 ```bash
 python3 -m venv venv
