@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Setup') {
+            steps {
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install robotframework
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '''
+                    . venv/bin/activate
+                    robot --outputdir results ecu_voltage_alone.robot ecu_can_flags.robot
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            robot outputPath: 'results'
+            archiveArtifacts artifacts: 'results/*', allowEmptyArchive: true
+        }
+    }
+}
